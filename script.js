@@ -11,10 +11,10 @@ let startStopflag = true;
 let transParentLevel = 0;
 
 //Hero variable
-let masaX = 250;  //main charactor's initial location (vertical)
-let masaY = 600;  //main charactor's initial location (horizon)
-let masaGo;
-let HeroObj;
+let charactorX = 250;  //main charactor's initial location (vertical)
+let charactorY = 600;  //main charactor's initial location (horizon)
+let charactorMoveing;
+let heroObj;
 let heroArr = [];
 let bulletSpead = 0;
 let bulletX = 0;
@@ -41,19 +41,19 @@ let sourceX = 0;
 let sourceEnd = 771;
 
 let bgimage = new Image();
-bgimage.src = "background.png";
+bgimage.src = "./image/background.png";
 let heroimage = new Image();
-heroimage.src = "herohouse.png";
+heroimage.src = "./image/herohouse.png";
 let enemyimage = new Image();
-enemyimage.src = "enemy.png";
+enemyimage.src = "./image/enemy.png";
 let bulletimage = new Image();
-bulletimage.src = "santa2.png";
+bulletimage.src = "./image/santa.png";
 let crashimage = new Image();
-crashimage.src = "crashhouse_proto2.png";
+crashimage.src = "./image/crashhouse.png";
 let getPoint = new Image();
-getPoint.src = "enemygage.png";
+getPoint.src = "./image/pointcountdeer.png";
 let gift = new Image();
-gift.src = "christmasgift.png";
+gift.src = "./image/christmasgift.png";
 
 
 // -----------------------------------------------------------
@@ -62,9 +62,8 @@ function setUp(){
    ctx = document.getElementById("gameCanvas").getContext("2d");
    titleCall();
    gameStart();
-   HeroObj = new HeroAttack(bulletX,bulletY-50);
-   heroArr.push(HeroObj);
-   
+   heroObj = new HeroAttack(bulletX,bulletY-50);
+   heroArr.push(heroObj);
 }
 
 function gameStart(){
@@ -72,11 +71,11 @@ function gameStart(){
    addEventListener("keydown",function(){
       if(event.keyCode ==90 ){
 
-         bulletX = masaX;
-         bulletY = masaY;
+         bulletX = charactorX;
+         bulletY = charactorY;
 
-         HeroObj = new HeroAttack(bulletX,bulletY);
-         heroArr.push(HeroObj);
+         heroObj = new HeroAttack(bulletX,bulletY);
+         heroArr.push(heroObj);
 
       }
    });
@@ -89,7 +88,7 @@ function gameStart(){
             ctx.clearRect(0,0,canvasWidth,canvasHeight);
 
             drawBackground();
-            charactorMove(masaX,masaY);
+            charactorMove(charactorX,charactorY);
             meter();
             restTime -= 0.01;
             if(restTime.toFixed(1) == 0){
@@ -136,17 +135,17 @@ function gameStart(){
 
          addEventListener("keydown",function(){
             if(event.keyCode == 39){
-               masaGo = 1;
+               charactorMoveing = 1;
             }else if(event.keyCode == 37){
-               masaGo = 2;
+               charactorMoveing = 2;
             }
          });
 
-         if(masaGo == 1 && masaX < canvasWidth-50){
-            masaX += 2;
+         if(charactorMoveing == 1 && charactorX < canvasWidth-50){
+            charactorX += 2;
          }
-         if(masaGo == 2 && masaX > 0){
-            masaX -= 2; 
+         if(charactorMoveing == 2 && charactorX > 0){
+            charactorX -= 2; 
          }
          
          // -------------bullet-----------------
@@ -175,7 +174,7 @@ function gameStart(){
                   point += 1;
                }
                
-               if(enemyArr[j] && Math.sqrt(Math.pow((masaY+15)-(enemyArr[j].y+50),2) + Math.pow((masaX+15)-(enemyArr[j].x+50),2)) < 40 ){
+               if(enemyArr[j] && Math.sqrt(Math.pow((charactorY+15)-(enemyArr[j].y+50),2) + Math.pow((charactorX+15)-(enemyArr[j].x+50),2)) < 40 ){
                   gameOver();
                   transParentLevel = 0;
                   return;
@@ -314,13 +313,13 @@ this.bullet=function(){
 }
 }
 
-function charactorMove(masaX,masaY){
+function charactorMove(charactorX,charactorY){
    
 ctx.save();
 ctx.beginPath();
-ctx.drawImage(heroimage,masaX,masaY);
+ctx.drawImage(heroimage,charactorX,charactorY);
 // ctx.fillStyle = "blue";
-// ctx.arc(masaX,masaY,30,0,2*Math.PI);
+// ctx.arc(charactorX,charactorY,30,0,2*Math.PI);
 // ctx.fill();
 ctx.restore();
 
@@ -342,7 +341,7 @@ this.createEnemy = function(){
 
 function meter(){
 ctx.save();
-ctx.translate(0,masaY+60);
+ctx.translate(0,charactorY+60);
 ctx.globalAlpha = 0.2;
 ctx.fillStyle = "cyan";
 ctx.fillRect(0,0,canvasWidth,canvasHeight);
@@ -350,26 +349,26 @@ ctx.restore();
 
 ctx.save();
 ctx.beginPath();
-ctx.translate((point) * 25,masaY+60);
+ctx.translate((point) * 25,charactorY+60);
 ctx.drawImage(getPoint,0,0);
 ctx.restore();
 
 ctx.save();
 ctx.beginPath();
-ctx.translate(250 ,masaY+60);
+ctx.translate(250 ,charactorY+60);
 ctx.drawImage(gift,0,0);
 ctx.restore();
 
 ctx.save();
 ctx.beginPath();
-ctx.translate(290 ,masaY+95);
+ctx.translate(290 ,charactorY+95);
 ctx.font = "20px Gergia";
 ctx.fillText(point,0,0);
 ctx.restore();
 
 ctx.save();
 ctx.beginPath();
-ctx.translate(315 ,masaY+95);
+ctx.translate(315 ,charactorY+95);
 ctx.font = "40px Gergia";
 ctx.fillText("TIME " + restTime.toFixed(1),0,0);
 ctx.restore();
