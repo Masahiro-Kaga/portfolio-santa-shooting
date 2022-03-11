@@ -206,7 +206,7 @@ function gameStart() {
   });
 }
 
-const drawBackground = function () {
+const drawBackground = () => {
   ctx.save();
   ctx.restore();
   ctx.drawImage(bgimage, sourceX, 0, sourceEnd, bgH, 0, 0, sourceEnd, bgH);
@@ -219,7 +219,7 @@ const drawBackground = function () {
   }
 };
 
-const gameClear = function () {
+const gameClear = () => {
   clearInterval(timerID);
   timerTP = setInterval(function () {
     transParentLevel += 0.05;
@@ -246,7 +246,7 @@ const gameClear = function () {
   });
 };
 
-const gameOver = function () {
+const gameOver = () => {
   clearInterval(timerID);
   timerTP = setInterval(function () {
     transParentLevel += 0.05;
