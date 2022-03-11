@@ -15,7 +15,7 @@ Portfolio - Shooting Game
 
 ## Note
 
-&emsp;This game only works on Laptop.If screen size is under 1024px, demo movie appears. 
+&emsp;This game only works on Laptop since user need key typing. If screen size is under 1024px, demo movie appears. 
 
 <br>
 
