@@ -2,10 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>shooting</title>
+    <title>Santa game</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="index.css" />
-    <link rel=”icon” href=“https://masahiro-kaga.github.io/portfolio-santa-shooting/favicon.ico”>
+    <link rel="icon" href="./image/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body onload="setUp()">
     <div class="container">
@@ -15,29 +21,48 @@
         width="500"
         height="700"
       ></canvas>
-      <div>
-        <h1>Get on reindeer٩( ᐛ )و</h1>
-        <p>*Enjoy with whole screen</p>
-        <h2>How to play</h2>
-        <p>/Choose level of difficulty</p>
-        <p>/Press SpaceKey to start</p>
-        <p>
-          /Shot the bullet(Santa) with press "z" key<br />
-          and let him get on reindeer
-        </p>
-        <p>/If 10 santas get on reindeers, game clear</p>
-        <p>
-          /However, your house should not be broken by <br />reindeers and you
-          should carry out mission till 50 sec
-        </p>
-        <br />
-        <h2>Please select level</h2>
-        <select id="difficulty">
-          <option value="1">Easy</option>
-          <option value="2">Normal</option>
-          <option value="3">Difficult</option>
-        </select>
-      </div>
+      <video id="demo" src="demomovie.mp4" loop autoplay muted controls>
+         
+      </video>
+      <section class="instruction">
+        <div class="img_container">
+          <img
+          src="./image/instruction_board.jpg"
+          alt="Instruction paper board."
+          />
+        </div>
+        <div class="instruction_description">
+          <h1>🦌Get on reindeer🎅🏻</h1>
+          <br />
+          <h2>Note</h2>
+          <ul>
+            <li>・Please play with wide screen at least [width : 1024px].</li>
+            <li>・This game only works on Laptop.If screen size is under 1024px, demo movie appears. Please watch below👀</li>
+          </ul>
+          <br>
+          <h2>How to play</h2>
+          <ul>
+            <li>・Choose level of difficulty.</li>
+            <li>・Press SpaceKey to start.</li>
+            <li>・Move the house with right and left arrow keys.</li>
+            <li>
+              ・Shot the bullet(Santa) with press "z" key and let him get on reindeer.<br />
+            </li>
+            <li>・If 10 santas get on reindeers, game clear.</li>
+            <li>
+              ・However, your house should not be broken by reindeers and
+              you should carry out mission till 50 sec.
+            </li>
+            <br />
+          </ul>
+          <h2>Please select level</h2>
+          <select id="difficulty">
+            <option value="1">Easy</option>
+            <option value="2">Normal</option>
+            <option value="3">Difficult</option>
+          </select>
+        </div>
+      </section>
     </div>
   </body>
 </html>

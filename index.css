@@ -4,17 +4,22 @@
   padding: 0;
 }
 
+html{
+    width:max-content;
+}
+
 body {
   background-image: url(./image/backgroundhtml.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: right center;
-  height: 100vh;
+  background-position: right;
 }
 
 .container {
   display: flex;
-  height: 100%;
+  height: auto;
+  width: 100vw;
+  height: 100vh;
   align-items: center;
 }
 
@@ -23,4 +28,97 @@ canvas {
   margin: 2vh 2vw;
   border: 8px solid #a60;
   box-shadow: 5px 5px 5px #000000, 5px 5px 5px #020 inset;
+}
+
+#demo {
+  display: none;
+}
+
+.instruction {
+  position: relative;
+  width: calc(100vw - 500px - 8vw);
+  height: 90vh;
+  overflow: auto;
+  border-radius: 15px;;
+}
+
+.img_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 90vh;
+}
+
+.img_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.instruction_description {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px 50px 0px 50px;
+  font-size: 1.5vmax;
+  font-family: "Mountains of Christmas", cursive;
+}
+
+.instruction_description h1 {
+  text-align: center;
+  font-size: 3vmax;
+}
+
+ul {
+  list-style: none;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+select {
+  width: 150px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin:20px 0;
+  }
+
+  #gameCanvas {
+    display: none;
+  }
+
+  #demo {
+    display: block;
+    width:90%;
+    max-width:750px;
+    max-height:75vh;
+    order: 2;
+    margin-top:20px;
+  }
+
+  .instruction {
+    order: 1;
+    width: 95vw;
+    height:30rem;
+  }
+  .instruction_description {
+    font-size: 30px;
+  }
+  .instruction_description h1 {
+    margin-top: 20px;
+    font-size: 60px;
+  }
+  ul ~ *{
+    display:none;
+  }
 }
